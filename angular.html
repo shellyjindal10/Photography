@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="Flickr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Flickr Photos for website</title>
+  <link rel="stylesheet" href="css/justifiedGallery.css" />
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="js/jquery.justifiedGallery.js"></script>
+
+  </script>
+</head>
+
+<body >
+<!--  Photos: {{data.total}}
+  <ul>
+    <li ng-repeat="fh in data.photo">
+      {{fh.title}}
+      <img ng-src="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}.jpg"
+    </li>
+  </ul>-->
+  <div  ng-controller="MainController" >
+    <div id="mygallery"  >
+       <img ng-repeat="fh in data" alt="{{fh.title}}" src="https://farm{{fh.farm}}.staticflickr.com/{{fh.server}}/{{fh.id}}_{{fh.secret}}.jpg"/>
+    </div>
+  </div>
+</body>
+<script>
+jQuery(document).ready(function() {
+  jQuery("#mygallery").justifiedGallery({
+    lastRow : 'justify',
+    rowHeight : 120,
+    fixedHeight : true,
+    captions : false,
+    margins : 7,
+    sizeRangeSuffixes: {
+      'lt100':'_t',
+      'lt240':'_m',
+      'lt320':'_n',
+      'lt500':'',
+      'lt640':'_z',
+      'lt1024':'_b'
+    }
+  });
+});
+</script>
+
+
+
+</html>
